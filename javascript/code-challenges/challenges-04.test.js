@@ -126,7 +126,7 @@ const alphabetizeBetter = (arr) => {
   return arr.sort( (a, b) => {
     let nameA = a.toLowerCase();
     let nameB = b.toLowerCase();
-    if (nameA < nameB) { 
+    if (nameA < nameB) {
       return -1;
     } else if (nameA > nameB) {
       return 1;
@@ -157,6 +157,7 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  return arr.sort( (a, b) => a.toString().length - b.toString().length );
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -179,6 +180,15 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
+  return arr.sort( (a, b) => {
+    if (a.lastName < b.lastName) {
+      return -1;
+    } else if (a.lastName > b.lastName) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -193,6 +203,26 @@ If two people have the same full name, the younger one should come first. Do not
 
 const sortPeopleBetter = (arr) => {
   // Solution code here...
+  return arr.sort( (a, b) => {
+    let aName = a.lastName;
+    let bName = b.lastName;
+
+    if (a.lastName === b.lastName) {
+      //sort by firstName
+      aName = a.firstName;
+      bName = b.firstName;
+    }
+
+    if (aName < bName) {
+      return -1;
+    } else if (aName > bName) {
+      return 1;
+    } else {
+      return a.age - b.age;
+    }
+  });
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -218,7 +248,16 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
+  let workWeek = {
+    Monday: 0,
+    Tuesday: 1,
+    Wednesday: 2,
+    Thursday: 3,
+    Friday: 4,
+  };
+
   // Solution code here...
+  return arr.sort( (a, b) => workWeek[a.dayOfWeek] - workWeek[b.dayOfWeek]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -233,6 +272,23 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  let workWeek = {
+    Monday: 0,
+    Tuesday: 1,
+    Wednesday: 2,
+    Thursday: 3,
+    Friday: 4,
+  };
+
+  // Solution code here...
+  return arr.sort( (a, b) => {
+
+    if (a.dayOfWeek !== b.dayOfWeek) {
+      return workWeek[a.dayOfWeek] - workWeek[b.dayOfWeek];
+    } else {
+      return (a.end - a.start) - (b.end - b.start);
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
