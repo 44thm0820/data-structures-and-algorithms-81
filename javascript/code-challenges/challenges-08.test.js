@@ -56,7 +56,14 @@ let characters = [
 
 const sortByChildren = (charArray) => {
   // Solution code here...
-  
+  return charArray.sort( (a, b) => {
+    if (a.children.length !== b.children.length) {
+      return a.children.length - b.children.length;
+    } else {
+      return a > b ? -1 : (a < b ? 1 : 0);
+    }
+  });
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,6 +75,7 @@ Write a function named containsW that takes in a string. This function should us
 
 const containsW = (str) => {
   // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
